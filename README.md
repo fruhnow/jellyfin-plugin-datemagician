@@ -1,9 +1,14 @@
 <h1 align="center">Jellyfin DateMagician</h1>
-<h3 align="center">Part of the <a href="https://jellyfin.media">Jellyfin Project</a></h3>
 
 <p align="center">
-Jellyfin DateMagician plugin is a plugin built with .NET
+Jellyfin DateMagician plugin is a plugin built with .NET. </p>
+<p align="center">Its main goal is to set the 'AddedDate'-Property of a TV Episode to its Premier Date to prevent the mess up of 'Latest TV Shows' in your Homescreen.
 </p>
+
+## How to use
+1. Install Plugin (see above)
+2. Run Library Scan
+3. Profit
 
 ## Build Process
 1. Clone or download this repository

@@ -24,7 +24,7 @@ namespace Jellyfin.Plugin.DateMagician.Tasks
             this.providerManager = providerManager;
         }
 
-        public string Name => "DateMagician Task";
+        public string Name => "Update AddedDate";
 
         public string Key => "DateMagician";
 

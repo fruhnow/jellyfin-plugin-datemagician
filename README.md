@@ -6,7 +6,7 @@ Jellyfin DateMagician plugin is a plugin built with .NET. </p>
 </p>
 
 ## How to use
-1. Install Plugin (see above)
+1. Build & Install Plugin (see below)
 2. Run Library Scan
 3. Profit
 

@@ -1,4 +1,5 @@
-﻿using Jellyfin.Plugin.DateMagician.Shared;
+﻿using Jellyfin.Plugin.DateMagician.Configuration;
+using Jellyfin.Plugin.DateMagician.Shared;
 using MediaBrowser.Controller.Entities.TV;
 using MediaBrowser.Controller.Library;
 using MediaBrowser.Controller.Providers;
@@ -24,6 +25,10 @@ namespace Jellyfin.Plugin.DateMagician.Tasks
 
         public async Task Run(IProgress<double> progress, CancellationToken cancellationToken)
         {
+            if(!Plugin.Instance.PluginConfiguration.isEnabled)
+            {
+                return;
+            }
             logger.LogInformation("Starting DateMagician magic.");
             var result = DateMagicianUtils.GetAllEpisodes(libraryManager);
             int numComplete = 0;

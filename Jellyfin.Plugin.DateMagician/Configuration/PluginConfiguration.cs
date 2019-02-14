@@ -7,9 +7,13 @@ namespace Jellyfin.Plugin.DateMagician.Configuration
     /// </summary>
     public class PluginConfiguration : BasePluginConfiguration
     {
+        public bool isEnabled { get; set; }
+
         public PluginConfiguration()
         {
-
+            isEnabled = true;
         }
+
     }
+
 }

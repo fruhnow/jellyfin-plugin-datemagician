@@ -24,7 +24,7 @@ namespace Jellyfin.Plugin.DateMagician.Tasks
             this.providerManager = providerManager;
         }
 
-        public string Name => "DateMagician Task";
+        public string Name => "Set Premiere Date";
 
         public string Key => "DateMagician";
 

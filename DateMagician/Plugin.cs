@@ -52,6 +52,8 @@ namespace Jellyfin.Plugin.DateMagician
             }
         }
 
+        public PluginConfiguration PluginConfiguration => Configuration;
+
         private Guid _id = new Guid("726D639F-6518-49C1-B447-BEB1FCC9F263");
         public override Guid Id
         {

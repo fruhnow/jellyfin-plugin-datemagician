@@ -1,27 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-
-  <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>jellyfin-plugin-datemagician</AssemblyName>
-    <AssemblyVersion>0.0.1</AssemblyVersion>
-    <FileVersion>0.0.1</FileVersion>
-    <RootNamespace>Jellyfin.Plugin.DateMagician</RootNamespace>
-  </PropertyGroup>
-
-  <ItemGroup>
-    <None Remove="Configuration\configPage.html" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Include="Configuration\configPage.html" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Jellyfin.Controller" Version="10.1.0" />
-  </ItemGroup>
-
-  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="xcopy &quot;$(TargetPath)&quot; &quot;%25AppData%25\jellyfin\plugins\&quot; /y" />
-  </Target>
-
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup />
 </Project>

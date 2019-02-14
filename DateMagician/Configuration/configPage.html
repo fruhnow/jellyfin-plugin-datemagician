@@ -1,56 +1,47 @@
 ﻿<!DOCTYPE html>
-
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
     <title>DateMagician Configuration</title>
 </head>
 <body>
-    <div data-role="page" class="DateMagicianConfigurationPage">
-        <form id="DateMagicianConfigurationForm">
-            <ul>
-                <li>
-                    <label for="chkIsEnabled">
-                        enable DateMagician
-                    </label>
-                    <input id="chkIsEnabled" name="chkIsEnabled" type="checkbox" value="isEnabled" />
-                </li>
-            </ul>
-            <button id="btnSubmit" type="submit"><span>Save</span></button>
-        </form>
-    </div>
-    <script type="text/javascript">
-        var DateMagicianConfigurationPage =
-        {
-            pluginUniqueId: "726D639F-6518-49C1-B447-BEB1FCC9F263",
-            virtualFolders: [],
-            physicalFolders: [],
-            loadConfiguration: function () {
+    <div data-role="page" class="page type-interior pluginConfigurationPage dateMagicianConfigurationPage" data-require="emby-button,emby-checkbox">
+        <div data-role="content">
+            <div class="content-primary">
+                <h1>DateMagician</h1>
+                <form class="dateMagicianConfigurationForm">
+                    <div class="inputContainer">
+                        <label class="emby-checkbox-label">
+                            <input is="emby-checkbox" id="is-enabled" name="chkIsEnabled" type="checkbox" value="isEnabled" />
+                            <span>Use DateMagician after Library Scan</span>
+                        </label>
+                    </div>
+                    <button id="btnSubmit" is="emby-button" type="submit"><span>${ButtonSave}</span></button>
+                </form>
+            </div>
+        </div>
+        <script type="text/javascript">
+            var pluginId = "726D639F-6518-49C1-B447-BEB1FCC9F263";
+            $('.dateMagicianConfigurationPage').on('pageshow', function () {
                 Dashboard.showLoadingMsg();
-                ApiClient.getPluginConfiguration(DateMagicianConfigurationPage.pluginUniqueId).then(function (config) {
-                    var page = $.mobile.activePage;
-                    $('#chkIsEnabled', page).checked(config.isEnabled).checkbox("refresh");
+                var page = this;
+                ApiClient.getPluginConfiguration(pluginId).then(function (config) {
+                    $('#is-enabled', page).checked(config.isEnabled);
                     Dashboard.hideLoadingMsg();
                 });
-            },
-            saveConfiguration: function () {
+            });
+
+            $('.dateMagicianConfigurationPage').on('submit', function () {
                 Dashboard.showLoadingMsg();
-                var page = $.mobile.activePage;
-                ApiClient.getPluginConfiguration(DateMagicianConfigurationPage.pluginUniqueId).then(function (config) {
-                    config.isEnabled = $('#chkIsEnabled').prop('checked');
-                    ApiClient.updatePluginConfiguration(DateMagicianConfigurationPage.pluginUniqueId, config).then(function (result) {
+                var isEnabled = $('#is-enabled').checked;
+                ApiClient.getPluginConfiguration(pluginId).then(function (config) {
+                    config.isEnabled = $('#is-enabled').prop('checked');
+                    ApiClient.updatePluginConfiguration(pluginId, config).then(function (result) {
                         Dashboard.processPluginConfigurationUpdateResult(result);
                     });
                 });
-            },
-        };
-        $('#DateMagicianConfigurationPage').on('pageshow', function () {
-            DateMagicianConfigurationPage.loadConfiguration();
-        });
-        $('#DateMagicianConfigurationForm').on('submit', function () {
-            DateMagicianConfigurationPage.saveConfiguration();
-            return false;
-        });
-    </script>
+            });
+        </script>
+    </div>
 </body>
 </html>
